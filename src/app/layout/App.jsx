@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, useLocation } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import EventDashboard from '../../features/events/eventDashboard/EventDashboard';
 import EventDetailed from '../../features/events/eventDetailed/EventDetailed';
@@ -9,6 +9,8 @@ import NavBar from '../../features/nav/NavBar';
 import './style.css';
 
 const App = () => {
+  const { key } = useLocation();
+
   return (
     <React.Fragment>
       <Route exact path='/' component={HomePage} />
@@ -24,6 +26,7 @@ const App = () => {
                 exact
                 path={['/createEvent', '/manage/:id']}
                 component={EventForm}
+                key={key}
               />
             </Container>
           </>
